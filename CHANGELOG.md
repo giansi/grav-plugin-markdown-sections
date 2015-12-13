@@ -5,7 +5,7 @@
     * Added markdown-sections.php due to wrong name in GPM system
 
 # v0.9.0
-## 11/15/2015
+## 11/26/2015
 
 1. [](#new)
     * Plugin started
