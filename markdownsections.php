@@ -20,8 +20,8 @@ class MarkdownSectionsPlugin extends Plugin
      */
     public function onPluginsInitialized()
     {
-        $this->enable([            
-            'onPageInitialized' => ['onPageInitialized', 0],            
+        $this->enable([
+            'onPageInitialized' => ['onPageInitialized', 0],
         ]);
     }
 
@@ -31,17 +31,17 @@ class MarkdownSectionsPlugin extends Plugin
     public function onPageInitialized()
     {
         $this->grav['twig']->twig_vars['sections'] = array();
-        
+
         $path = $this->grav['page']->path();
         $sections["page"] = $this->parseDir($path);
-        
+
         $sections["modular"] = array();
         $collection = $this->grav['page']->collection();
         $sections["modular"] = $this->parseChildren($collection);
-                
+
         $this->grav['twig']->twig_vars['sections'] = $sections;
     }
-    
+
     protected function parseDir($path)
     {
         $sections = array();
@@ -49,7 +49,7 @@ class MarkdownSectionsPlugin extends Plugin
         foreach($files as $fileName) {
             $sections[$fileName] = $this->parseFile($path, $fileName);
         }
-        
+
         return $sections;
     }
 
@@ -62,20 +62,20 @@ class MarkdownSectionsPlugin extends Plugin
         if (!$matches) {
             return array();
         }
-        
+
         $defaults = $this->config->get('system.pages.markdown');
         if ($defaults['extra']) {
             $parsedown = new \ParsedownExtra();
         } else {
             $parsedown = new \Parsedown();
         }
-            
+
         $sections = array();
         foreach($matches as $match) {
             $sectionName = $match[1];
             $sections[$sectionName] = $parsedown->text($match[2]);
         }
-        
+
         return $sections;
     }
 
@@ -84,12 +84,12 @@ class MarkdownSectionsPlugin extends Plugin
         if (is_array($children)) {
             return array();
         }
-        
+
         $modules = $children->modular();
         if (count($modules) == 0) {
             return array();
         }
-        
+
         $sections = array();
         foreach($children as $child) {
             $path = $child->path();
@@ -97,13 +97,13 @@ class MarkdownSectionsPlugin extends Plugin
             if (empty($section)) {
                 continue;
             }
-            
+
             $sections[basename($path)] = $section;
         }
-        
+
         return $sections;
     }
-    
+
     protected function scanDir($dir, $allowedExtensions = array('markdown'))
     {
         $files = array();
@@ -113,10 +113,10 @@ class MarkdownSectionsPlugin extends Plugin
             if ( ! in_array($ext, $allowedExtensions)) {
                 continue;
             }
-            
+
             $files[] = $filename;
         }
-        
+
         return $files;
     }
 }

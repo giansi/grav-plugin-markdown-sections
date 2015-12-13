@@ -1,5 +1,5 @@
 name: Markdown Sections
-version: 0.9.0
+version: 0.9.1
 description: "Markdown Sections is a Grav plugin that let's you add additional markdown files to a page and make them available in your twig template as an array. This is very useful when you need to render complex components using markdown"
 icon: file-text-o
 author:
@@ -8,7 +8,7 @@ author:
   url: http://diblas.net
 homepage: http://diblas.net/plugins/add-extra-markdown-files-to-any-page
 demo: -
-keywords: blog, theme
+keywords: markdown, section, yaml, php
 bugs: https://github.com/giansi/grav-plugin-blog/issues
 license: MIT
 
