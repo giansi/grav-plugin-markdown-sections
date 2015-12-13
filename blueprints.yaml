@@ -9,7 +9,7 @@ author:
 homepage: http://diblas.net/plugins/add-extra-markdown-files-to-any-page
 demo: -
 keywords: markdown, section, yaml, php
-bugs: https://github.com/giansi/grav-plugin-blog/issues
+bugs: https://github.com/giansi/grav-plugin-markdown-sections/issues
 license: MIT
 
 form:
